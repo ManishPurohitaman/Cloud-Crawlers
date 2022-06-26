@@ -1,0 +1,47 @@
+import * as React from "react";
+import { Route } from "react-router-dom";
+
+import {
+Button
+} from "@nutanix-ui/prism-reactjs";
+
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const header = (
+      <NavBarLayout
+        accountActions={accountActions}
+        accountInfo={account}
+        menuIcon={menuIcon}
+        title="AGS"
+      />
+    )
+    const leftPanel = (
+      <Menu
+        padding="20px-0px"
+        style={{ width: "240px" }}
+        theme="dark"
+        onClick={this.handleMenuClick}
+        activeKeyPath={[this.state.menuKeyPath]}
+      >
+        <MenuItem key={"/azure"}>Azure Resources</MenuItem>
+        <MenuItem key={"/nutanix"}>Nutanix Resources</MenuItem>
+        <MenuItem key={"/active_requests"}>Active Requests</MenuItem>
+        <MenuItem key={"/saved_requests"}>Saved Requests</MenuItem>
+        <MenuItem key={"/demossh"}>SHH</MenuItem>
+      </Menu>
+    );
+    
+    return (
+      <MainPageLayout
+        fullPage={true}
+        header={header}
+        leftPanel={leftPanel}
+        leftPanelVisible={true}
+      />)
+  }
+}
+
+<Home />
